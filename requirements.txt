@@ -1,0 +1,6 @@
+tensorflow==2.18.0
+pillow
+streamlit
+numpy
+keras==2.8
+gdown
