@@ -381,7 +381,7 @@ with col1:
 with col2:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-droplet-fill"></i>
+            <i class="bi bi-virus"></i>
             <h3>Bacterial Canker</h3>
             <p>Penyakit berbasis bakteri yang ditandai dengan munculnya bercak nekrotik (mati) berair atau kering pada daun.</p>
         </div>
@@ -390,7 +390,7 @@ with col2:
 with col3:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-bug-fill"></i>
+            <i class="bi bi-scissors"></i>
             <h3>Cutting Weevil</h3>
             <p>Serangan hama dari kelompok kumbang kecil yang menyerang tunas muda, tangkai bunga, dan cabang kecil.</p>
         </div>
@@ -399,7 +399,7 @@ with col3:
 with col4:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-tree-fill"></i>
+            <i class="bi bi-droplet-half"></i>
             <h3>Die Back</h3>
             <p>Penyakit jamur yang menyebabkan kematian jaringan tanaman dimulai dari ujung (pucuk) ranting atau cabang.</p>
         </div>
@@ -420,7 +420,7 @@ with col5:
 with col6:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-cloud-fog2-fill"></i>
+            <i class="bi bi-cloud-drizzle"></i>
             <h3>Powdery Mildew</h3>
             <p>Penyakit jamur (<b>Oidium mangiferae</b>) yang ditandai dengan munculnya lapisan putih seperti tepung pada permukaan daun.</p>
         </div>
@@ -429,7 +429,7 @@ with col6:
 with col7:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-journal-medical"></i>
+            <i class="bi bi-cloud-fog2"></i>
             <h3>Sooty Mould</h3>
             <p>Penyakit jamur yang menyebabkan lapisan berwarna hitam pekat seperti arang atau jelaga muncul di permukaan daun.</p>
         </div>
