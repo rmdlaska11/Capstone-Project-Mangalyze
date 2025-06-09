@@ -405,15 +405,6 @@ with col4:
         </div>
     """, unsafe_allow_html=True)
 
-with col4:
-    st.markdown("""
-        <div class="card-disease">
-            <i class="bi bi-bug"></i>
-            <h3>Gall Midge</h3>
-            <p>Serangan hama yang menyebabkan terbentuknya "gall" (bengkokan atau benjolan abnormal) pada daun.</p>
-        </div>
-    """, unsafe_allow_html=True)
-
 # Baris kedua - 3 kolom
 col5, col6, col7 = st.columns(3)
 
