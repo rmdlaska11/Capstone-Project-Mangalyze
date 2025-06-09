@@ -383,7 +383,7 @@ with col2:
         <div class="card-disease">
             <i class="bi bi-virus"></i>
             <h3>Bacterial Canker</h3>
-            <p>Penyakit berbasis bakteri yang ditandai dengan munculnya bercak nekrotik (mati) berair atau kering pada daun.</p>
+            <p>Penyakit berbasis bakteri yang ditandai dengan munculnya bercak nekrotik (mati) berair atau kering pada daun, biasanya dikelilingi oleh tepi kuning.</p>
         </div>
     """, unsafe_allow_html=True)
     
@@ -392,7 +392,7 @@ with col3:
         <div class="card-disease">
             <i class="bi bi-scissors"></i>
             <h3>Cutting Weevil</h3>
-            <p>Serangan hama dari kelompok kumbang kecil yang menyerang tunas muda, tangkai bunga, dan cabang kecil.</p>
+            <p>Serangan hama dari kelompok kumbang kecil yang menyerang tunas muda, tangkai bunga, dan cabang kecil dengan cara memotong atau menggigit pangkal jaringan.</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -401,7 +401,7 @@ with col4:
         <div class="card-disease">
             <i class="bi bi-droplet-half"></i>
             <h3>Die Back</h3>
-            <p>Penyakit jamur yang menyebabkan kematian jaringan tanaman dimulai dari ujung (pucuk) ranting atau cabang.</p>
+            <p>Penyakit jamur yang menyebabkan kematian jaringan tanaman dimulai dari ujung (pucuk) ranting atau cabang, yang kemudian menyebar ke arah batang utama.</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -413,7 +413,7 @@ with col5:
         <div class="card-disease">
             <i class="bi bi-bug"></i>
             <h3>Gall Midge</h3>
-            <p>Serangan hama yang menyebabkan terbentuknya "gall" (bengkokan atau benjolan abnormal) pada daun.</p>
+            <p>Serangan hama yang menyebabkan terbentuknya "gall" (bengkokan atau benjolan abnormal) pada daun atau jaringan tanaman lainnya.</p>
         </div>
     """, unsafe_allow_html=True)
     
