@@ -16,7 +16,12 @@ st.set_page_config(
 )
 
 # Load model
-model = load_model('model/densenet201.keras')
+@st.cache_resource
+def load_keras_model():
+    model = tf.keras.models.load_model("model/densenet201.keras")
+    return model
+
+model = load_keras_model()
 
 # Label and recommendation maps
 label_map = {
@@ -311,15 +316,6 @@ st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
 # Hero Section
 st.markdown("""
-    <style>
-        /* Sembunyikan ikon link dari heading di Streamlit */
-        h1 > a.anchor-link, h2 > a.anchor-link, h3 > a.anchor-link {
-            display: none;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
     <section id="hero" class="hero">
         <h1>Deteksi Penyakit Daun Mangga</h1>
         <p>Gunakan AI untuk mengidentifikasi penyakit pada daun mangga dengan cepat dan akurat.</p>
@@ -345,7 +341,7 @@ st.markdown("""
             min-height: 270px;
             display: flex;
             flex-direction: column;
-            justify-content: center !important;
+            justify-content: center ;
             align-items: center !important;    /* center horizontal & vertical isi */
             text-align: center !important;     /* text center */
         }
