@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deteksi Penyakit Daun Mangga</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/favicon.ico" />
+
+    <!-- Meta SEO -->
+    <meta
+      name="description"
+      content="Aplikasi AI untuk mendeteksi penyakit daun mangga dengan cepat dan akurat."
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts: Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Font */
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .navbar-brand span {
+        color: #09d65f;
+      }
+
+      .section {
+        padding: 80px 0;
+        scroll-margin-top: 80px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      /* Hero dengan background image + gradient overlay */
+      .hero {
+        background: linear-gradient(
+            to right,
+            rgba(70, 129, 92, 0.689),
+            rgba(11, 87, 35, 0.667)
+          ),
+          url("https://images.unsplash.com/photo-1724565923616-efc1864bbacf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            center/cover no-repeat;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      /* Card penyakit */
+      .card-disease {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+        border-radius: 1rem !important;
+        box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.15);
+      }
+
+      .card-disease:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 2rem rgb(0 0 0 / 0.25);
+      }
+
+      .card-disease .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .card-disease .card-title {
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .card-disease .card-text {
+        flex-grow: 1;
+      }
+
+      /* Icon di card */
+      .card-disease i {
+        font-size: 3rem;
+        color: #0f8835;
+        margin-bottom: 1rem;
+      }
+
+      /* Button hover */
+      .btn-primary {
+        transition: background-color 0.3s ease;
+        font-weight: 600;
+      }
+      .btn-primary:hover {
+        background-color: #0c6c2c;
+      }
+
+      /* Loading progress bar */
+      #loading .progress {
+        height: 25px;
+      }
+      #loading .progress-bar {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      /* Result image styling */
+      .result-image {
+        max-height: 300px;
+        border-radius: 1rem;
+        box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.15);
+      }
+
+      /* Rekomendasi card */
+      .card-recommendation {
+        border-radius: 1rem;
+        box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 0.1);
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background-color: #e8f5e9;
+        padding: 40px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Mangalyze<span>.</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarContent"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#hero">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#diseases">Jenis Penyakit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#deteksi">Prediksi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero" data-aos="fade-up">
+      <div class="container">
+        <h1>Deteksi Penyakit Daun Mangga</h1>
+        <p class="lead mt-3">
+          Gunakan AI untuk mengidentifikasi penyakit pada daun mangga dengan
+          cepat dan akurat.
+        </p>
+        <a href="#deteksi" class="btn btn-light btn-lg mt-4 fw-semibold"
+          >Mulai Deteksi</a
+        >
+      </div>
+    </section>
+
+    <!-- Jenis Penyakit -->
+    <section class="container my-5" id="diseases">
+      <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="section-title">Jenis Penyakit Daun Mangga</h2>
+        <p class="text-muted">
+          Berikut beberapa penyakit yang bisa dideteksi sistem kami:
+        </p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="150">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-bug-fill"></i>
+              <h5 class="card-title">Anthracnose</h5>
+              <p class="card-text">
+                Penyakit jamur (<b>Colletotrichum gloeosporioides</b>) yang ditandai dengan munculnya bercak-bercak coklat tua hingga hitam.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="250">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-droplet-fill"></i>
+              <h5 class="card-title">Bacterial Canker</h5>
+              <p class="card-text">
+                Penyakit berbasis bakteri yang ditandai dengan munculnya bercak nekrotik (mati) berair atau 
+                kering pada daun, biasanya dikelilingi oleh tepi kuning.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="350">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-tree-fill"></i>
+              <h5 class="card-title">Die Back</h5>
+              <p class="card-text">
+                Penyakit jamur yang menyebabkan kematian jaringan tanaman dimulai dari 
+                ujung (pucuk) ranting atau cabang, yang kemudian menyebar ke arah batang utama.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-bug"></i>
+              <h5 class="card-title">Gall Midge</h5>
+              <p class="card-text">
+                Serangan hama yang menyebabkan terbentuknya "gall" (bengkokan atau benjolan abnormal) pada daun atau jaringan tanaman lainnya.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="550">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-cloud-fog2-fill"></i>
+              <h5 class="card-title">Powdery Mildew</h5>
+              <p class="card-text">
+                Penyakit jamur (<b>Oidium mangiferae</b>) yang ditandai dengan munculnya lapisan 
+                putih seperti tepung pada permukaan daun.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="650">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-bug-fill"></i>
+              <h5 class="card-title">Cutting Weevil</h5>
+              <p class="card-text">
+                Serangan hama dari kelompok kumbang kecil yang menyerang tunas muda, 
+                tangkai bunga, dan cabang kecil dengan cara memotong atau menggigit pangkal jaringan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="750">
+          <div class="card card-disease">
+            <div class="card-body">
+              <i class="bi bi-journal-medical"></i>
+              <h5 class="card-title">Sooty Mould</h5>
+              <p class="card-text">
+                Penyakit jamur yang menyebabkan lapisan berwarna hitam pekat seperti arang atau jelaga muncul di permukaan daun.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prediksi (Form dan Hasil) -->
+    <section class="container my-5" id="deteksi" data-aos="fade-up">
+      <h2 class="section-title text-center mb-4">Mulai Prediksi Penyakit</h2>
+
+      <div class="row g-4">
+        <!-- Form Upload -->
+        <div class="col-lg-5">
+          <div class="card shadow-sm p-4">
+            <form id="detectionForm" method="POST" action="/" enctype="multipart/form-data">
+
+              <div class="mb-3">
+                <label for="imageUpload" class="form-label fw-semibold"
+                  >Unggah Gambar Daun Mangga</label
+                >
+                <input
+                  class="form-control"
+                  type="file"
+                  id="imageUpload"
+                  accept="image/*"
+                  required
+                />
+                <img
+                  id="previewImage"
+                  src="#"
+                  alt="Preview Gambar"
+                  class="img-thumbnail mt-3"
+                  style="max-height: 200px; display: none"
+                />
+              </div>
+              <button type="submit" class="btn btn-success w-100 fw-semibold">
+                Deteksi Sekarang
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Hasil Deteksi -->
+        <div class="col-lg-7">
+          <div class="card shadow-sm p-4 h-100">
+            <div id="loading" class="text-center" style="display: none">
+              <p class="mt-3 fw-semibold">Menganalisis gambar...</p>
+              <div class="progress" style="height: 20px">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                  style="width: 100%"
+                >
+                  Sedang Diproses...
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="result"
+              class="p-4 rounded shadow-sm bg-white border"
+              style="display: none"
+              data-aos="zoom-in"
+            >
+              <h4 class="text-center mb-4 text-success fw-bold">
+                <i class="bi bi-clipboard-check me-2"></i> Hasil Deteksi
+              </h4>
+
+              <!-- Gambar Deteksi -->
+              <div class="text-center mb-4">
+                <img
+                  id="resultImage"
+                  src="#"
+                  alt="Gambar Deteksi"
+                  class="img-thumbnail rounded"
+                  style="max-height: 260px"
+                />
+                <p class="text-muted small mt-2">
+                  Gambar daun mangga yang dideteksi
+                </p>
+              </div>
+
+              <!-- Diagnosa -->
+              <div
+                class="alert d-flex align-items-center mb-4"
+                id="diagnosisAlert"
+                role="alert"
+              >
+                <i class="bi bi-activity me-3 fs-4" id="diagnosisIcon"></i>
+                <div>
+                  <h5 class="mb-1 fw-semibold">Diagnosa</h5>
+                  <p id="diagnosisText" class="fw-semibold fs-5"></p>
+                </div>
+              </div>
+
+              <!-- Rekomendasi -->
+              <div class="card bg-light border-0 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold text-success">
+                    <i class="bi bi-lightbulb-fill me-2"></i> Rekomendasi
+                    Penanganan
+                  </h5>
+                  <ul id="recommendationText" class="list-unstyled"></ul>
+                </div>
+              </div>
+
+              <!-- Empty Result (error/fallback) -->
+              <div
+                id="emptyResult"
+                class="alert alert-warning mt-4"
+                style="display: none;"
+                role="alert"
+              >
+                Tidak ada hasil yang dapat ditampilkan.
+              </div>
+            </div>
+
+            <div
+              id="emptyResult"
+              class="text-center text-muted fst-italic"
+              style="margin-top: 10px"
+            >
+              Unggah gambar dan klik "Deteksi Sekarang" untuk memulai.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-light mt-5">
+      <p class="mb-0">
+        &copy; 2025 Mangalyze. Dibuat oleh Tim Mangalyze.
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS & dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      // Simulasi deteksi sederhana (ganti sesuai logic AI-mu)
+      const form = document.getElementById("detectionForm");
+      const loading = document.getElementById("loading");
+      const result = document.getElementById("result");
+      const resultImage = document.getElementById("resultImage");
+      const diagnosisText = document.getElementById("diagnosisText");
+      const recommendationText = document.getElementById("recommendationText");
+      const emptyResult = document.getElementById("emptyResult");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const fileInput = document.getElementById("imageUpload");
+        const file = fileInput.files[0];
+        if (!file) {
+          alert("Silakan unggah gambar terlebih dahulu.");
+          return;
+        }
+
+        // Reset tampilan hasil sebelumnya
+        result.style.display = "none";
+        emptyResult.style.display = "none";
+        diagnosisText.textContent = "";
+        recommendationText.innerHTML = "";
+        resultImage.style.display = "none";
+        resultImage.src = "";
+
+        // Tampilkan loading
+        loading.style.display = "block";
+
+        try {
+          const formData = new FormData();
+          formData.append("imagefile", file);
+
+          const response = await fetch("http://localhost:5001/", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!response.ok) {
+            throw new Error("Gagal menghubungi server.");
+          }
+
+          const data = await response.json();
+
+          // Tampilkan hasil deteksi
+          diagnosisText.textContent = data.prediction || "Tidak ada prediksi";
+
+          // Rekomendasi bisa berupa array atau string
+          if (Array.isArray(data.recommendation)) {
+            recommendationText.innerHTML = data.recommendation
+              .map((item) => `<li>${item}</li>`)
+              .join("");
+          } else if (typeof data.recommendation === "string") {
+            recommendationText.innerHTML = `<li>${data.recommendation}</li>`;
+          } else {
+            recommendationText.innerHTML = "<li>Tidak ada rekomendasi</li>";
+          }
+
+          if (data.image_url) {
+            // Jika backend memberikan URL gambar hasil, gunakan
+            resultImage.src = data.image_url;
+            resultImage.style.display = "inline-block";
+          } else {
+            // Fallback: tampilkan gambar yang diupload user
+            resultImage.src = URL.createObjectURL(file);
+            resultImage.style.display = "inline-block";
+          }
+
+          loading.style.display = "none";
+          result.style.display = "block";
+        } catch (error) {
+          loading.style.display = "none";
+          emptyResult.style.display = "block";
+          alert("Terjadi kesalahan: " + error.message);
+        }
+      });
+    </script>
+  </body>
+</html>
