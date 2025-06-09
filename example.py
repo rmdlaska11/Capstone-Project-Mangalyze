@@ -381,18 +381,27 @@ with col1:
 with col2:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-tree-fill"></i>
-            <h3>Die Back</h3>
-            <p>Penyakit jamur yang menyebabkan kematian jaringan tanaman dimulai dari ujung (pucuk) ranting atau cabang.</p>
-        </div>
-    """, unsafe_allow_html=True)
-
-with col3:
-    st.markdown("""
-        <div class="card-disease">
             <i class="bi bi-droplet-fill"></i>
             <h3>Bacterial Canker</h3>
             <p>Penyakit berbasis bakteri yang ditandai dengan munculnya bercak nekrotik (mati) berair atau kering pada daun.</p>
+        </div>
+    """, unsafe_allow_html=True)
+    
+with col3:
+    st.markdown("""
+        <div class="card-disease">
+            <i class="bi bi-bug-fill"></i>
+            <h3>Cutting Weevil</h3>
+            <p>Serangan hama dari kelompok kumbang kecil yang menyerang tunas muda, tangkai bunga, dan cabang kecil.</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col4:
+    st.markdown("""
+        <div class="card-disease">
+            <i class="bi bi-tree-fill"></i>
+            <h3>Die Back</h3>
+            <p>Penyakit jamur yang menyebabkan kematian jaringan tanaman dimulai dari ujung (pucuk) ranting atau cabang.</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -411,18 +420,18 @@ col5, col6, col7 = st.columns(3)
 with col5:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-cloud-fog2-fill"></i>
-            <h3>Powdery Mildew</h3>
-            <p>Penyakit jamur (<b>Oidium mangiferae</b>) yang ditandai dengan munculnya lapisan putih seperti tepung pada permukaan daun.</p>
+            <i class="bi bi-bug"></i>
+            <h3>Gall Midge</h3>
+            <p>Serangan hama yang menyebabkan terbentuknya "gall" (bengkokan atau benjolan abnormal) pada daun.</p>
         </div>
     """, unsafe_allow_html=True)
-
+    
 with col6:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-bug-fill"></i>
-            <h3>Cutting Weevil</h3>
-            <p>Serangan hama dari kelompok kumbang kecil yang menyerang tunas muda, tangkai bunga, dan cabang kecil.</p>
+            <i class="bi bi-cloud-fog2-fill"></i>
+            <h3>Powdery Mildew</h3>
+            <p>Penyakit jamur (<b>Oidium mangiferae</b>) yang ditandai dengan munculnya lapisan putih seperti tepung pada permukaan daun.</p>
         </div>
     """, unsafe_allow_html=True)
 
