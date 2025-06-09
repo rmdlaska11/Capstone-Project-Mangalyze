@@ -429,7 +429,7 @@ with col6:
 with col7:
     st.markdown("""
         <div class="card-disease">
-            <i class="bi bi-cloud-fog2"></i>
+            <i class="bi bi-cloud-fog2-fill"></i>
             <h3>Sooty Mould</h3>
             <p>Penyakit jamur yang menyebabkan lapisan berwarna hitam pekat seperti arang atau jelaga muncul di permukaan daun.</p>
         </div>
